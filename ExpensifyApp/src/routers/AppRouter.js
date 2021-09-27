@@ -1,3 +1,4 @@
+//yarn add react-router@4.2.2
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
@@ -6,7 +7,6 @@ import EditExpensePage from '../components/EditExpensePage';
 import HelpPage from '../components/HelpPage';
 import Header from '../components/Header';
 import NotFoundPage from '../components/NotFoundPage';
-
 
 const AppRouter = () => (
   <BrowserRouter>
