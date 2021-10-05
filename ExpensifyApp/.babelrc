@@ -1,9 +1,12 @@
+// yarn add babel-plugin-transform-object-rest-spread@6.23.0
+// yarn add transform-class-properties
 {
   "presets": [
     "env",
     "react"
   ],
   "plugins": [
-    "transform-class-properties"
+    "transform-class-properties",
+    "transform-object-rest-spread"
   ]
 }

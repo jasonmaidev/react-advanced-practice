@@ -13,15 +13,16 @@
 // console.log(` is ${old} living in ${city} where it is ${temp} degrees.`)
 
 
-const book = {
-  title: 'Ego',
-  author: 'Ryan',
-  publisher: {
-    name: 'Penguin'
-  }
-};
+// const book = {
+//   title: 'Ego',
+//   author: 'Ryan',
+//   publisher: {
+//     name: 'Penguin'
+//   }
+// };
 
-const { title, author, publisher } = book;
-const { name: publisherName = 'Self-Published' } = book.publisher;
+// const { title, author, publisher } = book;
+// const { name: publisherName = 'Self-Published' } = book.publisher;
 
-console.log(publisherName);
+// console.log(publisherName);
+
