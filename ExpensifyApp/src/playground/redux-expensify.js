@@ -27,6 +27,7 @@ const editExpense = (id, updates) => ({
   id,
   updates
 });
+
 // Set Text Filter
 const setTextFilter = (text = '') => ({
   type: 'SET_TEXT_FILTER',
@@ -51,14 +52,8 @@ const setEndDate = (endDate) => ({
   endDate
 });
 
-const expensesReducerDefaultState = [];
 
-const filtersReducerDefaultState = {
-  text: '',
-  sortBy: 'date',
-  startDate: undefined,
-  endDate: undefined
-};
+const expensesReducerDefaultState = [];
 
 const expensesReducer = (state = expensesReducerDefaultState, update) => {
   switch (update.type) {
@@ -84,6 +79,14 @@ const expensesReducer = (state = expensesReducerDefaultState, update) => {
     default:
       return state;
   }
+};
+
+// Filters Reducer
+const filtersReducerDefaultState = {
+  text: '',
+  sortBy: 'date',
+  startDate: undefined,
+  endDate: undefined
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, update) => {
@@ -151,9 +154,10 @@ store.subscribe(() => {
 });
 
 
-const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 11000, createdAt: 100 }));
-const expenseTwo = store.dispatch(addExpense({ description: 'Meal', amount: 2000, createdAt: 500 }));
+// const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 11000, createdAt: 100 }));
+// const expenseTwo = store.dispatch(addExpense({ description: 'Meal', amount: 2000, createdAt: 500 }));
 
+// console.log('hi');
 // store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 // store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
@@ -164,7 +168,7 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Meal', amount: 2000
 // store.dispatch(sortByAmount(''));
 // store.dispatch(sortByDate(''));
 
-// store.dispatch(setStartDate(600));
+//store.dispatch(setStartDate(600));
 // store.dispatch(setStartDate());
 // store.dispatch(setEndDate(900));
 
