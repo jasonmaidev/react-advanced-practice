@@ -1,91 +1,54 @@
 'use strict';
 
-console.log('App.js is not running!');
+var _react = require('react');
 
-var app = {
-  title: 'Indecision App',
-  subtitle: 'Put your life in the hands of a computer',
-  options: []
-};
+var _react2 = _interopRequireDefault(_react);
 
-var onFormSubmit = function onFormSubmit(e) {
-  e.preventDefault();
+var _reactDom = require('react-dom');
 
-  var option = e.target.elements.option.value;
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    render();
-  }
-};
+var _reactRedux = require('react-redux');
 
-var onRemoveAll = function onRemoveAll() {
-  app.options = [];
-  render();
-};
+var _expenses = require('./actions/expenses');
 
-var onMakeDecision = function onMakeDecision() {
-  var randomNum = Math.floor(Math.random() * app.options.length);
-  var option = app.options[randomNum];
-  alert(option);
-};
+var _AppRouter = require('./routers/AppRouter');
 
-var appRoot = document.getElementById('app');
+var _AppRouter2 = _interopRequireDefault(_AppRouter);
 
-var render = function render() {
-  var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      app.title
-    ),
-    app.subtitle && React.createElement(
-      'p',
-      null,
-      app.subtitle
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length > 0 ? 'Here are your options' : 'No options'
-    ),
-    React.createElement(
-      'button',
-      { disabled: app.options.length === 0, onClick: onMakeDecision },
-      'What should I do?'
-    ),
-    React.createElement(
-      'button',
-      { onClick: onRemoveAll },
-      'Remove All'
-    ),
-    React.createElement(
-      'ol',
-      null,
-      app.options.map(function (option) {
-        return React.createElement(
-          'li',
-          { key: option },
-          option
-        );
-      })
-    ),
-    React.createElement(
-      'form',
-      { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option' }),
-      React.createElement(
-        'button',
-        null,
-        'Add Option'
-      )
-    )
-  );
+var _configureStore = require('./store/configureStore');
 
-  ReactDOM.render(template, appRoot);
-};
+var _configureStore2 = _interopRequireDefault(_configureStore);
 
-render();
+var _filters = require('./actions/filters');
+
+var _expenses2 = require('./selectors/expenses');
+
+var _expenses3 = _interopRequireDefault(_expenses2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// yarn add react-redux@5.0.5
+//yarn add redux@3.7.2
+
+var store = (0, _configureStore2.default)();
+
+store.dispatch((0, _expenses.addExpense)({ description: 'water bill', amount: 500 }));
+store.dispatch((0, _expenses.addExpense)({ description: 'gas bill', amount: 300 }));
+store.dispatch((0, _filters.setTextFilter)('water'));
+
+setTimeout(function () {
+  store.dispatch((0, _filters.setTextFilter)('rent'));
+}, 4000);
+
+var state = store.getState();
+var visibleExpenses = (0, _expenses3.default)(state.expenses, state.filters);
+console.log(visibleExpenses);
+
+var jsx = _react2.default.createElement(
+  _reactRedux.Provider,
+  { store: store },
+  _react2.default.createElement(_AppRouter2.default, null)
+);
+
+_reactDom2.default.render(jsx, document.getElementById('app'));
