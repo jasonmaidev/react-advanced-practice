@@ -1,25 +1,20 @@
 import React from 'react';
 import Option from './Option';
 
-
-//props passed down: handleDelete
 const Options = (props) => (
   <div>
-    <button onClick={props.handleDeleteAll}>Remove All</button>
-    {props.options.length === 0 && <p>Please enter something.</p>}
+    <button onClick={props.handleDeleteOptions}>Remove All</button>
+    {props.options.length === 0 && <p>Please add an option to get started!</p>}
     {
       props.options.map((option) => (
         <Option
           key={option}
           optionText={option}
-          handleDelete={props.handleDelete}
+          handleDeleteOption={props.handleDeleteOption}
         />
       ))
     }
   </div>
-)
-
-
-
+);
 
 export default Options;

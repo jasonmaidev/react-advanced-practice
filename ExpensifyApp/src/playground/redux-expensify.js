@@ -94,7 +94,9 @@ const filtersReducer = (state = filtersReducerDefaultState, update) => {
     case 'SET_TEXT_FILTER':
       return {
         ...state,
+        //spreads all properties from filters reducer
         text: update.text
+        //updates to text property
       };
     case 'SORT_DATE':
       return {

@@ -34,12 +34,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var store = (0, _configureStore2.default)();
 
 store.dispatch((0, _expenses.addExpense)({ description: 'water bill', amount: 500 }));
-store.dispatch((0, _expenses.addExpense)({ description: 'gas bill', amount: 300 }));
-store.dispatch((0, _filters.setTextFilter)('water'));
-
-setTimeout(function () {
-  store.dispatch((0, _filters.setTextFilter)('rent'));
-}, 4000);
+store.dispatch((0, _expenses.addExpense)({ description: 'gas bill', createdAt: 1000 }));
+store.dispatch((0, _expenses.addExpense)({ description: 'rent', amount: 3000 }));
 
 var state = store.getState();
 var visibleExpenses = (0, _expenses3.default)(state.expenses, state.filters);

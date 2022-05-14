@@ -6,12 +6,18 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
-  //teach webpack to run babel loader with rules :https://webpack.js.org/configuration/module/#modulerules
   module: {
     rules: [{
       loader: 'babel-loader',
       test: /\.js$/,
       exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
     }]
   },
   devtool: 'cheap-module-eval-source-map',
@@ -19,5 +25,3 @@ module.exports = {
     contentBase: path.join(__dirname, 'public')
   }
 };
-
-//loader
