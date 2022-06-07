@@ -1,5 +1,7 @@
 'use strict';
 
+require('react-dates/initialize');
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -28,10 +30,9 @@ var _expenses3 = _interopRequireDefault(_expenses2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// yarn add react-redux@5.0.5
+var store = (0, _configureStore2.default)(); // yarn add react-redux@5.0.5
 //yarn add redux@3.7.2
 
-var store = (0, _configureStore2.default)();
 
 store.dispatch((0, _expenses.addExpense)({ description: 'water bill', amount: 500 }));
 store.dispatch((0, _expenses.addExpense)({ description: 'gas bill', createdAt: 1000 }));

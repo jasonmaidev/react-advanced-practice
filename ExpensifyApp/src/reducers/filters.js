@@ -1,38 +1,40 @@
+//disabled date properties until moment js dependency fix
+
 // Filters Reducer
 const filtersReducerDefaultState = {
   text: '',
-  sortBy: 'date',
-  startDate: undefined,
-  endDate: undefined
+  sortBy: 'amount',
+  // startDate: undefined,
+  // endDate: undefined
 };
 
-const filtersReducer = (state = filtersReducerDefaultState, update) => {
-  switch (update.type) {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
+  switch (action.type) {
     case 'SET_TEXT_FILTER':
       return {
         ...state,
-        text: update.text
+        text: action.text
       };
-    case 'SORT_DATE':
-      return {
-        ...state,
-        sortBy: 'date'
-      }
+    // case 'SORT_DATE':
+    //   return {
+    //     ...state,
+    //     sortBy: 'date'
+    //   }
     case 'SORT_AMOUNT':
       return {
         ...state,
         sortBy: 'amount'
       }
-    case 'SET_START_DATE':
-      return {
-        ...state,
-        startDate: update.startDate
-      }
-    case 'SET_END_DATE':
-      return {
-        ...state,
-        endDate: update.endDate
-      }
+    // case 'SET_START_DATE':
+    //   return {
+    //     ...state,
+    //     startDate: update.startDate
+    //   }
+    // case 'SET_END_DATE':
+    //   return {
+    //     ...state,
+    //     endDate: update.endDate
+    //   }
     default:
       return state;
   }
