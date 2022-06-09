@@ -27,6 +27,7 @@
     "moment": "2.18.1",
     "normalize.css": "8.0.0",
     "raf": "3.3.2",
+    "raf-polyfill": "^1.0.0",
     "react": "16.0.0",
     "react-addons-shallow-compare": "15.6.0",
     "react-dates": "21.8.0",
